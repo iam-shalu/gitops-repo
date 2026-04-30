@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: gitops-demo
+  labels:
+    app: gitops-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: gitops-demo
   template:
     metadata:
       labels:
-        app: myapp
+        app: gitops-demo
     spec:
       containers:
-        - name: myapp
-          image: localhost:5000/myapp:v1
-          imagePullPolicy: Always
+        - name: gitops-demo
+          image: ghcr.io/iam-shalu/gitops-demo:v1.0.0
           ports:
             - containerPort: 80
